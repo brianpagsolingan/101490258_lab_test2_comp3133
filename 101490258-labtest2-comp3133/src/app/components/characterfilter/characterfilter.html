@@ -1,39 +1,45 @@
 <mat-toolbar color="primary" class="filter-toolbar">
-    <span>Harry Potter Characters Filter</span>
+  <span>Harry Potter Characters Filter</span>
 </mat-toolbar>
 
 <div class="filter-container">
-    <mat-form-field appearance="fill">
-        <mat-label>Select House</mat-label>
-        <mat-select [(ngModel)]="selectedHouse" (selectionChange)="onHouseChange()">
-            <mat-option *ngFor="let house of houses" [value]="house">
-                {{ house }}
-        </mat-select>
-    </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Select House</mat-label>
+    <mat-select [(ngModel)]="selectedHouse" (selectionChange)="onHouseChange()">
+      <mat-option *ngFor="let house of houses" [value]="house">
+        {{ house }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div *ngIf="loading" class="spinner-container">
+  <mat-spinner></mat-spinner>
 </div>
 
 <div class="character-grid" *ngIf="!loading && characters.length > 0">
-    <mat-card
-        *ngFor="let character of characters"
-        class="character-card"
-        (click)="viewDetails(character.id)"
-        >
-        <img
-            *ngIf="character.image"
-            [src]="character.image"
-            [alt]="character.name"
-            class="character-image"
-            />
-        <div *ngIf="!character.image" class="no-image">
-            No Image
-        </div>
-        <mat-card-content>
-            <h3>{{ character.name }}</h3>
-            <p *ngIf="character.actor">Actor: {{ character.actor }}</p>
-            <span class="house-badge"
-            [style.background-color]="getHouseColor(character.house)">
-                {{ character.house }}
-            </span>
-        </mat-card-content>
-    </mat-card>
+  <mat-card
+    *ngFor="let character of characters"
+    class="character-card"
+    (click)="viewDetails(character.id)"
+  >
+    <img
+      *ngIf="character.image"
+      [src]="character.image"
+      [alt]="character.name"
+      class="character-image"
+    />
+    <div *ngIf="!character.image" class="no-image">No Image</div>
+
+    <mat-card-content>
+      <h3>{{ character.name }}</h3>
+      <p *ngIf="character.actor">Actor: {{ character.actor }}</p>
+      <span
+        class="house-badge"
+        [style.background-color]="getHouseColor(character.house)"
+      >
+        {{ character.house }}
+      </span>
+    </mat-card-content>
+  </mat-card>
 </div>

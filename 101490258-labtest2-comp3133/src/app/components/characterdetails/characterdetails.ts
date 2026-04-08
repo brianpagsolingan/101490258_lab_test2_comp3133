@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HarrypotterService } from '../../services/harrypotter';
@@ -29,7 +29,8 @@ export class Characterdetails implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private hpService: HarrypotterService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ){}
 
   ngOnInit(): void {
@@ -39,10 +40,12 @@ export class Characterdetails implements OnInit {
           next: (data) => {
             this.character = data.length > 0 ? data[0] : null;
             this.loading = false;
+            this.cdr.detectChanges(); // Ensure view updates after data is loaded
           },
           error: (err) => {
             console.error('Error fetching character details:', err);
             this.loading = false;
+            this.cdr.detectChanges(); // Ensure view updates after error
           }
         });
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -34,7 +34,8 @@ export class Characterfilter implements OnInit {
 
   constructor(
     private hpService: HarrypotterService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ){}
 
   ngOnInit(): void {}
@@ -46,10 +47,12 @@ export class Characterfilter implements OnInit {
       next: (data) => {
         this.characters = data;
         this.loading = false;
+        this.cdr.detectChanges(); // Ensure view updates after data is loaded
       },
       error: (err) => {
         console.error('Error fetching characters:', err);
         this.loading = false;
+        this.cdr.detectChanges(); // Ensure view updates after error
       }
     });
   }

@@ -4,7 +4,7 @@
     <mat-spinner></mat-spinner>
 </div>
 
-<div class="character-grid" *ngif="!loading">
+<div class="character-grid" *ngIf="!loading">
     <mat-card
         *ngFor="let character of characters"
         class="character-card"
