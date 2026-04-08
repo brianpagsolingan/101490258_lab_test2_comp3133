@@ -20,7 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './characterlist.html',
   styleUrl: './characterlist.scss',
 })
-export class Characterlist {
+export class Characterlist implements OnInit {
   characters: Character[] = [];
   loading = true;
 
@@ -55,5 +55,5 @@ export class Characterlist {
       default: return '#666';
     }
   }
-  
+
 }
