@@ -46,7 +46,10 @@ export class Characterlist implements OnInit {
   }
 
   viewDetails(id: string): void {
-    this.router.navigate(['/character', id]);
+    console.log('Navigating to character details for ID:', id);
+    if(id) {
+      this.router.navigate(['/character', id]);
+    }
   }
 
   getHouseColor(house: string): string {
