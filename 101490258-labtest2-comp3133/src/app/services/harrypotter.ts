@@ -6,7 +6,7 @@ import { Character } from '../models/character';
 @Injectable({
   providedIn: 'root',
 })
-export class Harrypotter {
+export class HarrypotterService {
   private baseUrl = 'https://hp-api.onrender.com/api'
   constructor(private http: HttpClient) {}
 

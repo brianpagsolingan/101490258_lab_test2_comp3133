@@ -1,0 +1,33 @@
+<h2 class="page-title">Harry Potter Characters</h2>
+
+<div *ngIf="loading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="character-grid" *ngif="!loading">
+    <mat-card
+        *ngFor="let character of characters"
+        class="character-card"
+        (click)="viewDetails(character.id)"
+        >
+        <img
+            *ngIf="character.image"
+            [src]="character.image"
+            [alt]="character.name"
+            class="character-image"
+            />
+        <div *ngIf="!character.image" class="no-image">
+            No Image
+        </div>
+        <mat-card-content>
+            <h3>{{ character.name }}</h3>
+            <span
+                class="house-badge"
+                [style.background-color]="getHouseColor(character.house)"
+            >
+                {{ character.house || 'Unknown House' }}
+            </span>
+        </mat-card-content>
+    </mat-card>
+</div>
+  
