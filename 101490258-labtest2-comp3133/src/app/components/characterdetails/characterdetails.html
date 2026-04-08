@@ -1,0 +1,54 @@
+<div *ngIf="loading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!loading && character" class="details-container">
+    <mat-card class="details-card">
+        <div class="details-layout">
+            <img
+                *ngIf="character.image"
+                [src]="character.image"
+                [alt]="character.name"
+                class="details-image"
+            />
+            <div class="detail-info">
+                <h2 [style.color]="getHouseColor (character.house)">{{ character.name }}</h2>
+
+                <mat-list>
+                    <mat-list-item>
+                        <strong>House:</strong>&nbsp;
+                        <span [style.color]="getHouseColor(character.house)">
+                            {{ character.house || 'Unknown' }}
+                        </span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <strong>Actor:</strong>&nbsp;
+                        <span style="color:gold">{{ character.actor || 'Unknown' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <strong>Wizard:</strong>&nbsp;
+                        <span style="color:gold">{{ character.wizard || 'Unknown' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <strong>Species:</strong>&nbsp;
+                        <span style="color:gold">{{ character.species || 'Unknown' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <strong>Ancestry:</strong>&nbsp;
+                        <span style="color:gold">{{ character.ancestry || 'Unknown' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <strong>Patronus:</strong>&nbsp;
+                        <span style="color:gold">{{ character.patronus || 'Unknown' }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <strong>Alive:</strong>&nbsp;
+                        <span style="color:gold">{{ character.alive ? 'Yes' : 'No' }}</span>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+    </mat-card>
+
+    <button mat-raised-button color="primary" (click)="goBack()" class="back-btn">Back to List</button>
+</div>
