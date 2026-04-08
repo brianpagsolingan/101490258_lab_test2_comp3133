@@ -5,8 +5,11 @@ An Angular application that displays Harry Potter characters using the HP API. U
 ## Features
 
 - **Character List:** Displays all Harry Potter characters with their name, house, and image.
+  ![Character List](screenshots/characterlist.png)
 - **Filter by House:** Dropdown menu to filter characters by Hogwarts house (Gryffindor, Slytherin, Hufflepuff, Ravenclaw).
+  ![Filter By House](screenshots/characterfilter.png)
 - **Character Details:** Displays detailed information for a selected character including species, ancestry, wand details, actor name, and more.
+  ![Character Details](screenshots/characterdetails.png)
 - **Angular Material UI:** Uses Angular Material components for a clean and consistent design.
 
 ## API
